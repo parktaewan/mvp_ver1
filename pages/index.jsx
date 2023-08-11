@@ -33,7 +33,7 @@ export default function Home() {
   };
   useEffect(() => {
     if (activeLogin === "") router.push("/login");
-    else a(activeId);
+    else a(activeLogin);
   }, []);
 
   if (activeLogin === "")
