@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import MainItem from "./MainItem";
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/compat/firestore";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "src/firebase/firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { activeLoginAtom, selectedMainAtom } from "@atoms/dataAtom";

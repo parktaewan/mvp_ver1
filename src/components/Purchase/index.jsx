@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
 import { activeLoginAtom, selectedMainAtom } from "@atoms/dataAtom";
-import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { db } from "src/firebase/firebase";
 import PurchaseActive from "./PurchaseActive";
-import { collection, doc, getDoc, updateDoc } from "firebase/compat/firestore";
+import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 
 const Purchase = () => {
   const activeLogin = useRecoilValue(activeLoginAtom);
