@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { db } from "src/firebase/firebase";
 import PurchaseActive from "./PurchaseActive";
-import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, updateDoc } from "firebase/compat/firestore";
 
 const Purchase = () => {
   const activeLogin = useRecoilValue(activeLoginAtom);

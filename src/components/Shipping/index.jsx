@@ -1,6 +1,7 @@
 import { activeLoginAtom } from "@atoms/dataAtom";
 import styled from "@emotion/styled";
 import firebase from "firebase/compat/app";
+import { doc, getDoc } from "firebase/compat/firestore";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { db } from "src/firebase/firebase";
@@ -11,8 +12,8 @@ const Shipping = () => {
   const [shippingCount, setShippingCount] = useState([]);
   const [shippingArray, setShippingArray] = useState([]);
   const a = async () => {
-    const docRef = firebase.firestore.doc(db, activeLogin, `shipping`);
-    const docSnap = await firebase.firestore.getDoc(docRef);
+    const docRef = doc(db, activeLogin, `shipping`);
+    const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
       setShippingCount(docSnap.data()["active"]);

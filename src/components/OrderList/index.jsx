@@ -1,16 +1,16 @@
-import styled from '@emotion/styled';
-import OrderMenu from './OrderMenu';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import styled from "@emotion/styled";
+import OrderMenu from "./OrderMenu";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
   activeLoginAtom,
   dcCountAtom,
   orderCountAtom,
   orderDataAtom,
   shippingCountAtom,
-} from '@atoms/dataAtom';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from 'src/firebase/firebase';
-import { useEffect, useState } from 'react';
+} from "@atoms/dataAtom";
+import { doc, getDoc } from "firebase/compat/firestore";
+import { db } from "src/firebase/firebase";
+import { useEffect, useState } from "react";
 
 const OrderList = () => {
   const activeLogin = useRecoilValue(activeLoginAtom);
@@ -24,7 +24,7 @@ const OrderList = () => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      setOrderCount(docSnap.data()['active']);
+      setOrderCount(docSnap.data()["active"]);
     } else {
     }
   };
@@ -32,7 +32,7 @@ const OrderList = () => {
     const docRef = doc(db, activeLogin, `shipping`);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      setShippingCount(docSnap.data()['active']);
+      setShippingCount(docSnap.data()["active"]);
     } else {
     }
   };
@@ -40,7 +40,7 @@ const OrderList = () => {
     const docRef = doc(db, activeLogin, `DC`);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      setDCCount(docSnap.data()['active']);
+      setDCCount(docSnap.data()["active"]);
     } else {
     }
   };
@@ -53,24 +53,24 @@ const OrderList = () => {
   let oCount = 0;
   if (orderCount) {
     orderCount.map((it) => {
-      if (it.split('.')[1] !== 'none') oCount++;
+      if (it.split(".")[1] !== "none") oCount++;
     });
   }
   let sCount = 0;
   if (shippingCount) {
     shippingCount.map((it) => {
       console.log(it);
-      if (it.split('.')[1] !== 'none') sCount++;
+      if (it.split(".")[1] !== "none") sCount++;
     });
   }
   let dCount = 0;
   if (dCCount) {
     dCCount.map((it) => {
-      if (it.split('.')[1] !== 'none') dCount++;
+      if (it.split(".")[1] !== "none") dCount++;
     });
   }
 
-  console.log('hi', sCount);
+  console.log("hi", sCount);
 
   return (
     <Container>
@@ -98,7 +98,7 @@ const Title = styled.div`
   align-items: center;
 
   padding-left: 15px;
-  font-family: 'NanumGothic';
+  font-family: "NanumGothic";
   font-size: 16;
   font-weight: 700;
 `;

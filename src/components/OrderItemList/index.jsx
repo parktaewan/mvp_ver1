@@ -7,7 +7,7 @@ import {
   orderDataAtom,
   selectedMainAtom,
 } from "@atoms/dataAtom";
-import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, updateDoc } from "firebase/compat/firestore";
 import { db } from "src/firebase/firebase";
 import { useEffect, useState } from "react";
 
