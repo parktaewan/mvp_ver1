@@ -1,9 +1,6 @@
 // Import the functions you need from the SDKs you need
-import firebase, { initializeApp, getApp } from "firebase/app";
-import "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
-
-export let app;
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB55_8ne7msr90Ici6L3mUH7BzBpgTOeBI",
@@ -15,10 +12,8 @@ const firebaseConfig = {
   measurementId: "G-N153C4SE0W",
 };
 
-try {
-  app = getApp("app");
-} catch (e) {
-  app = initializeApp(firebaseConfig, "app");
-}
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+const db = firebaseApp.firestore();
+
+export { db };

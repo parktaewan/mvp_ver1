@@ -1,6 +1,6 @@
 import { activeLoginAtom } from "@atoms/dataAtom";
 import styled from "@emotion/styled";
-import firebase from "firebase";
+import firebase from "firebase/compat/app";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { db } from "src/firebase/firebase";

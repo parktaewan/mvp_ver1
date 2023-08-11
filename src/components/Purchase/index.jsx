@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import { activeLoginAtom, selectedMainAtom } from "@atoms/dataAtom";
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { db } from "src/firebase/firebase";
 import PurchaseActive from "./PurchaseActive";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 
 const Purchase = () => {
   const activeLogin = useRecoilValue(activeLoginAtom);
@@ -40,20 +41,14 @@ const Purchase = () => {
   };
 
   const setUpdateDoc = async (array) => {
-    const refundRef = firebase.firestore.collection(db, activeLogin);
+    const refundRef = collection(db, activeLogin);
 
-    await firebase.firestore.updateDoc(
-      firebase.firestore.doc(refundRef, `${"size" + selectedMain}`),
-      {
-        SizeTitle: array,
-      }
-    );
-    await firebase.firestore.updateDoc(
-      firebase.firestore.doc(refundRef, `order`),
-      {
-        active: array,
-      }
-    );
+    await updateDoc(doc(refundRef, `${"size" + selectedMain}`), {
+      SizeTitle: array,
+    });
+    await updateDoc(doc(refundRef, `order`), {
+      active: array,
+    });
   };
 
   useEffect(() => {
