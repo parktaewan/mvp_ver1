@@ -8,7 +8,7 @@ import {
   orderDataAtom,
   shippingCountAtom,
 } from "@atoms/dataAtom";
-import { doc, getDoc } from "firebase/compat/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "src/firebase/firebase";
 import { useEffect, useState } from "react";
 

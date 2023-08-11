@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import firebase from "firebase/compat/app";
-import "firebase/compat/firestore";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB55_8ne7msr90Ici6L3mUH7BzBpgTOeBI",
@@ -14,6 +14,6 @@ const firebaseConfig = {
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-const db = firebaseApp.firestore();
+const db = getFirestore();
 
 export { db };

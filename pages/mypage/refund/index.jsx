@@ -1,5 +1,4 @@
 import { activeLoginAtom, activeRefundAtom } from "@atoms/dataAtom";
-import DCItem from "@components/DeliveryCompleted/DCItem";
 import Header from "@components/Header";
 import Refund from "@components/Refund";
 import styled from "@emotion/styled";
