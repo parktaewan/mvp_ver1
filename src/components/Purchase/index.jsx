@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { activeLoginAtom, selectedMainAtom } from "@atoms/dataAtom";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { db } from "src/firebase/firebase";
 import PurchaseActive from "./PurchaseActive";
+import { doc, getDoc } from "firebase/firestore";
 
 const Purchase = () => {
   const activeLogin = useRecoilValue(activeLoginAtom);
@@ -15,12 +16,8 @@ const Purchase = () => {
   const selectedMain = useRecoilValue(selectedMainAtom);
 
   const a = async () => {
-    const docRef = firebase.firestore.doc(
-      db,
-      activeLogin,
-      `${"size" + selectedMain}`
-    );
-    const docSnap = await firebase.firestore.getDoc(docRef);
+    const docRef = doc(db, activeLogin, `${"size" + selectedMain}`);
+    const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
       setUpdateArray(docSnap.data()["SizeTitle"]);
